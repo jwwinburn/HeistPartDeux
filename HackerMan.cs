@@ -13,9 +13,9 @@ namespace heist
             bank.AlarmScore =- SkillLevel;
             
             if(bank.AlarmScore <=0){
-                Console.WriteLine($"{Name} hacked the alarm");
+                Console.WriteLine($"{Name} hacked the alarm.");
             }else{
-                Console.WriteLine($"{Name} is hacking the alarm, decreased security by {SkillLevel}");
+                Console.WriteLine($"{Name} is hacking the alarm, decreased security by {SkillLevel}.");
             }
         }
     }

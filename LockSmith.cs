@@ -13,9 +13,9 @@ namespace heist
             bank.VaultScore =- SkillLevel;
             
             if(bank.VaultScore <=0){
-                Console.WriteLine($"{Name} unlocked the vault");
+                Console.WriteLine($"{Name} unlocked the vault.");
             }else{
-                Console.WriteLine($"{Name} is unlocking the vault, vault security decreased by {SkillLevel} points");
+                Console.WriteLine($"{Name} is unlocking the vault, vault security decreased by {SkillLevel} points.");
             }
         }
     }
