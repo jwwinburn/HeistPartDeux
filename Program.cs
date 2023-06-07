@@ -103,26 +103,48 @@ namespace heist
             }
 
             mostSecure(meanBank);
+             bool keepadding = true;
 
-            foreach (IRobber crew in rolodex)
+            void availableCrew(List<IRobber> mylist){
+
+                int totalPercent = 0;
+                foreach(IRobber myFam in mylist){
+                    totalPercent += myFam.PercentageCut;
+                }
+                Console.WriteLine(totalPercent);
+                foreach (IRobber crew in rolodex)
             {
-                System.Console.WriteLine($"{rolodex.IndexOf(crew) + 1} {crew.Name} is a {crew.Role} they have a skill level of {crew.SkillLevel}. They make {crew.PercentageCut}% of spoils");
+                if(!mylist.Contains(crew) && (crew.PercentageCut+totalPercent<100)){
+                    System.Console.WriteLine($"{rolodex.IndexOf(crew) + 1} {crew.Name} is a {crew.Role} they have a skill level of {crew.SkillLevel}. They make {crew.PercentageCut}% of spoils");
+                }
+                else{
+                    keepadding =false;
+                }
+                
             }
+            }
+           
 
             List<IRobber> myCrew = new List<IRobber>();
+             availableCrew(myCrew);
 
+           
 
-            bool keepadding = true;
-
-
+            // List<int> myCrewIndex =new List<int>();
 
             while (keepadding)
             {
                 System.Console.WriteLine("Pick your family by selecting the number to the left of the person.");
 
                 int familyselection = Int32.Parse(Console.ReadLine()) - 1;
+                // myCrewIndex.Add(familyselection);
 
+                
                 myCrew.Add(rolodex[familyselection]);
+
+                
+
+                availableCrew(myCrew);
 
                 System.Console.WriteLine("Do you want to add another user? Yes or No?");
 
