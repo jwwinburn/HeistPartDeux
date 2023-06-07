@@ -13,9 +13,9 @@ namespace heist
             bank.SecurityGuardScore =- SkillLevel;
             
             if(bank.SecurityGuardScore <=0){
-                Console.WriteLine($"{Name} 'wiffled' the guard");
+                Console.WriteLine($"{Name} 'wiffled' the guard.");
             }else{
-                Console.WriteLine($"{Name} has injured the guard by {SkillLevel} points");
+                Console.WriteLine($"{Name} has injured the guard by {SkillLevel} points.");
             }
         }
     }
