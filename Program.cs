@@ -106,7 +106,7 @@ namespace heist
              bool keepadding = true;
 
             void availableCrew(List<IRobber> mylist){
-
+                bool findSomeone = false;
                 int totalPercent = 0;
                 foreach(IRobber myFam in mylist){
                     totalPercent += myFam.PercentageCut;
@@ -114,14 +114,16 @@ namespace heist
                 Console.WriteLine(totalPercent);
                 foreach (IRobber crew in rolodex)
             {
-                if(!mylist.Contains(crew) && (crew.PercentageCut+totalPercent<100)){
+                if((!mylist.Contains(crew)) && (crew.PercentageCut+totalPercent<100)){
+                    findSomeone =true;
                     System.Console.WriteLine($"{rolodex.IndexOf(crew) + 1} {crew.Name} is a {crew.Role} they have a skill level of {crew.SkillLevel}. They make {crew.PercentageCut}% of spoils");
-                }
-                else{
-                    keepadding =false;
                 }
                 
             }
+                if(findSomeone == false){
+                    Console.WriteLine("You cant add anymore people");
+                    keepadding =false;
+                }
             }
            
 
@@ -156,7 +158,7 @@ namespace heist
 
                 }
             }
-            System.Console.WriteLine(myCrew.Count);
+            
         }
     }
 
