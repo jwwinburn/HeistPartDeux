@@ -8,6 +8,9 @@ namespace heist
         public int SkillLevel { get ; set ; }
         public int PercentageCut { get ; set ; }
 
+        public string Role { get;}  = "Hacker Man";
+
+
         public void PerformSkill(Bank bank)
         {
             bank.AlarmScore =- SkillLevel;

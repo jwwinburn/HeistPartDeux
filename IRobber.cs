@@ -7,6 +7,8 @@ public interface IRobber
     int SkillLevel { get; set; }
     int PercentageCut { get; set; }
 
+    string Role { get;}
+
     void PerformSkill(Bank bank);
 
 }
