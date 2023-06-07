@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace heist
 {
@@ -23,6 +24,10 @@ namespace heist
             };
 
             Console.WriteLine($"{rolodex.Count} is the number of guys in the crew.");
+            bool keepLooping =true;
+            while(keepLooping){
+
+            
             Console.WriteLine($"Enter new member's name:");
             string newCrewName = Console.ReadLine();
             System.Console.WriteLine($"What is {newCrewName}'s Skill Level?");
@@ -60,7 +65,37 @@ namespace heist
             }
 
             System.Console.WriteLine($"{newCrewName} is {newCrewSkillLevel} skilled, with a {newCrewPercentageCut} cut, and is an experienced {newCrewSpecality}.");
+            Console.WriteLine("Would you like to add another member? Yes or No?");
+            string newMemberAnswer = Console.ReadLine().ToLower();
+            if(newMemberAnswer == "no"){
+                keepLooping =false;
+            }else{
+                keepLooping =true;
+            }
+            }
             Console.WriteLine($"{rolodex.Count} is the number of guys in the crew.");
+
+            int alarmScore =new Random().Next(0,100);
+            int vaultScore = new Random().Next(0,100);
+            int securityGuardScore = new Random().Next(0,100);
+            int cashOnHand = new Random().Next(50000,1000000);
+
+            Bank meanBank = new Bank(){
+                AlarmScore = alarmScore,
+                VaultScore = vaultScore,
+                SecurityGuardScore = securityGuardScore,
+                CashOnHand =cashOnHand,
+            };
+
+            void mostSecure(Bank bank){
+                Dictionary<string,int> bankScores = new Dictionary<string,int>(){{"Alarm",bank.AlarmScore},{"Vault",bank.VaultScore},{"SecurityGuard",bank.SecurityGuardScore}};
+                string lowestScore =bankScores.OrderBy(x=>x.Value).First().Key;
+                string highestScore =bankScores.OrderByDescending(x=>x.Value).First().Key;
+                Console.WriteLine($"{highestScore} is the most secure system and {lowestScore} is the least secure system");
+
+            }
+
+            mostSecure(meanBank);
 
         }
     }
