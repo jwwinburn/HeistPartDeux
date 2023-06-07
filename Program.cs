@@ -10,12 +10,12 @@ namespace heist
             //Console.WriteLine("Hello World!");
 
             //Defining the homies
-            Muscle muscleman = new Muscle(){Name = "Mustleman", SkillLevel = 50, PercentageCut = 10};
-            Muscle mrt = new Muscle(){Name = "Mr. T", SkillLevel = 70, PercentageCut = 10};
-            LockSmith hannibal = new LockSmith(){Name = "Hannibal", SkillLevel = 50, PercentageCut = 15};
-            LockSmith mordecai = new LockSmith(){Name = "Mordecai", SkillLevel = 55, PercentageCut = 15};
-            Hacker animoose = new Hacker(){Name = "Animoose", SkillLevel = 55, PercentageCut = 20};
-            Hacker rigby = new Hacker(){Name = "Rigby", SkillLevel = 55, PercentageCut = 20};
+            Muscle muscleman = new Muscle() { Name = "Mustleman", SkillLevel = 50, PercentageCut = 10 };
+            Muscle mrt = new Muscle() { Name = "Mr. T", SkillLevel = 70, PercentageCut = 10 };
+            LockSmith hannibal = new LockSmith() { Name = "Hannibal", SkillLevel = 50, PercentageCut = 15 };
+            LockSmith mordecai = new LockSmith() { Name = "Mordecai", SkillLevel = 55, PercentageCut = 15 };
+            Hacker animoose = new Hacker() { Name = "Animoose", SkillLevel = 55, PercentageCut = 20 };
+            Hacker rigby = new Hacker() { Name = "Rigby", SkillLevel = 55, PercentageCut = 20 };
 
             //New IRobber List called Rolodex.
             List<IRobber> rolodex = new List<IRobber>(){
@@ -31,29 +31,36 @@ namespace heist
             int newCrewPercentageCut = Int32.Parse(Console.ReadLine());
             System.Console.WriteLine($"Is {newCrewName} a Hacker, Muscle, or LockSmith?");
             string newCrewSpecality = Console.ReadLine().ToLower();
-            switch(newCrewSpecality){
-            case "hacker":
-            //if hacker
-            System.Console.WriteLine($"You chose Hacker");
+            switch (newCrewSpecality)
+            {
+                case "hacker":
+                    //if hacker
+                    //System.Console.WriteLine($"You chose Hacker");
+                    Hacker Adam = new Hacker() { Name = newCrewName, SkillLevel = newCrewSkillLevel, PercentageCut = newCrewPercentageCut };
+                    rolodex.Add(Adam);
 
-            break;
-            case "muscle":
-            //if mustle
-            System.Console.WriteLine($"You chose Mustle");
+                    break;
+                case "muscle":
+                    //if mustle
+                    //System.Console.WriteLine($"You chose Mustle");
+                    Muscle Jerry = new Muscle() { Name = newCrewName, SkillLevel = newCrewSkillLevel, PercentageCut = newCrewPercentageCut };
+                    rolodex.Add(Jerry);
 
-            break;
-            case "locksmith":
-            //if locksmith
-            System.Console.WriteLine($"You chose LockSmith");
+                    break;
+                case "locksmith":
+                    //if locksmith
+                    //System.Console.WriteLine($"You chose LockSmith");
+                    LockSmith Dan = new LockSmith() { Name = newCrewName, SkillLevel = newCrewSkillLevel, PercentageCut = newCrewPercentageCut };
+                    rolodex.Add(Dan);
 
-            break;
-            default:
-            System.Console.WriteLine($"That is NOT a specality.");
-            break;
+                    break;
+                default:
+                    System.Console.WriteLine($"That is NOT a specality.");
+                    break;
             }
 
             System.Console.WriteLine($"{newCrewName} is {newCrewSkillLevel} skilled, with a {newCrewPercentageCut} cut, and is an experienced {newCrewSpecality}.");
-
+            Console.WriteLine($"{rolodex.Count} is the number of guys in the crew.");
 
         }
     }
