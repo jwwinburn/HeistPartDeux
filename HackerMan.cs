@@ -13,7 +13,7 @@ namespace heist
 
         public void PerformSkill(Bank bank)
         {
-            bank.AlarmScore =- SkillLevel;
+            bank.AlarmScore = bank.AlarmScore- SkillLevel;
             
             if(bank.AlarmScore <=0){
                 Console.WriteLine($"{Name} hacked the alarm.");

@@ -12,7 +12,7 @@ namespace heist
 
         public void PerformSkill(Bank bank)
         {
-            bank.VaultScore = -SkillLevel;
+            bank.VaultScore = bank.VaultScore -SkillLevel;
 
             if (bank.VaultScore <= 0)
             {

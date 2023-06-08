@@ -111,7 +111,7 @@ namespace heist
                 foreach(IRobber myFam in mylist){
                     totalPercent += myFam.PercentageCut;
                 }
-                Console.WriteLine(totalPercent);
+                Console.WriteLine($"Crew Percentage: {totalPercent}");
                 foreach (IRobber crew in rolodex)
             {
                 if((!mylist.Contains(crew)) && (crew.PercentageCut+totalPercent<100)){
@@ -158,7 +158,26 @@ namespace heist
 
                 }
             }
+
+            foreach(IRobber member in myCrew){
+                member.PerformSkill(meanBank);
+            }
             
+       
+
+            if(meanBank.AlarmScore <=0 && meanBank.SecurityGuardScore <= 0 && meanBank.VaultScore <= 0){
+                Console.WriteLine("Your crew has successfuly robbed the bank");
+                Console.WriteLine($"Heist Total: {meanBank.CashOnHand}");
+                Console.WriteLine("Each Members Cut");
+                int crewCut = 0;
+                foreach(IRobber member in myCrew){
+                    crewCut +=(meanBank.CashOnHand * member.PercentageCut)/100;
+                    Console.WriteLine($"{member.Name}: {(meanBank.CashOnHand * member.PercentageCut)/100}");
+                };
+                Console.WriteLine($"My Cut: {meanBank.CashOnHand - crewCut}");
+            }else{
+                 Console.WriteLine("Your crew has failed robbing the bank");
+            }
         }
     }
 

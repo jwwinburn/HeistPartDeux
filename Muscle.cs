@@ -11,7 +11,7 @@ namespace heist
 
         public void PerformSkill(Bank bank)
         {
-            bank.SecurityGuardScore =- SkillLevel;
+            bank.SecurityGuardScore = bank.SecurityGuardScore - SkillLevel;
             
             if(bank.SecurityGuardScore <=0){
                 Console.WriteLine($"{Name} 'wiffled' the guard.");
